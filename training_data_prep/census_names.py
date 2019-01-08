@@ -23,7 +23,15 @@ def makeTaggedData(filename, correct_tag):
         tagged_data = set([ (row[0], correct_tag) for row in reader])
     return tagged_data
 
-def addFailedPreds( tagged_list, train_file ):
+
+def makeInitialTaggedData(filename, correct_tag):
+    with open(filename, 'rU') as f:
+        reader = csv.reader(f)
+        tagged_data = set([(row[0][0], correct_tag) for row in reader])
+    return tagged_data
+
+
+def addFailedPreds(tagged_list, train_file):
     print("adding failures")
     i = 0
     added = 0
@@ -72,7 +80,7 @@ def trainModel(training_data, model_file,
 
 
 if __name__ == '__main__' :
-    
+
     surname_file = 'training_data_prep/unlabeled_data/Top1000_census_surnames.csv'
     female_file = 'training_data_prep/unlabeled_data/top_female_names_census.csv'
     male_file = 'training_data_prep/unlabeled_data/top_male_names_census.csv'
@@ -85,4 +93,4 @@ if __name__ == '__main__' :
     random.shuffle(shuffled_list)
 
     addFailedPreds(shuffled_list, 'training/training_data/labeled.xml')
-    
+
