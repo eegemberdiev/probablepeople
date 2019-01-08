@@ -42,6 +42,7 @@ LABELS = [
     'ShortForm',
     'ProxyFor',
     'AKA',
+    'Junk',
     ]
 
 PARENT_LABEL = 'Name'
