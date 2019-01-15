@@ -79,11 +79,11 @@ def count_hamming_loss(labels_pred, labels_true, critical_labels):
     true_predictions = 0.0
     for index, true_label in enumerate(labels_true):
         try:
-            if true_label in critical_labels and labels_pred[index] != true_label:
+            if true_label in critical_labels and labels_pred[index] == true_label:
                 true_predictions += 1
         except ValueError:
             continue
-    return true_predictions / len(labels_true)
+    return true_predictions / len(set(critical_labels).intersection(set(labels_true)))
 
 
 def measure_accuracy_given_surname(dev_dataset, **kwargs):
@@ -129,10 +129,10 @@ def divide_on_ten_data_sets(data_set):
 
 
 def launch():
-    # full_name_file = os.path.join(BASE_DIR, 'training_data/name_collection.xml')
+    full_name_file = os.path.join(BASE_DIR, 'training/training_data/labeled.xml')
     # full_name_file = os.path.join(BASE_DIR, 'training_data/full_labeled.xml')
     # full_name_file = os.path.join(BASE_DIR, '..', 'name_data/labeled/company_labeled.xml')
-    full_name_file = os.path.join(BASE_DIR, 'name_data/labeled/junk.xml')
+    # full_name_file = os.path.join(BASE_DIR, 'name_data/labeled/junk.xml')
     # full_name_file = os.path.join(BASE_DIR, 'mahara-full-names/labeled_xml/dev_set.xml')
     # full_name_file = os.path.join(BASE_DIR, 'mahara-full-names/labeled_xml/train_set.xml')
     critical_labels = ['GivenName', 'Surname', 'MiddleName', 'CorporationName']
