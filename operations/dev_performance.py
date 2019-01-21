@@ -8,6 +8,8 @@ from probablepeople import parse
 from settings import BASE_DIR
 
 
+# Read from xml file labeled data and measure accuracy
+
 def get_dev_string_from_list(labeled_string):
     dev_string = ' '.join(map(str, [word[0] for word in labeled_string]))
     return dev_string
@@ -129,7 +131,7 @@ def divide_on_ten_data_sets(data_set):
 
 
 def launch():
-    full_name_file = os.path.join(BASE_DIR, 'training/training_data/labeled.xml')
+    full_name_file = os.path.join(BASE_DIR, 'training/training_data/dev_labeled.xml')
     # full_name_file = os.path.join(BASE_DIR, 'training_data/full_labeled.xml')
     # full_name_file = os.path.join(BASE_DIR, '..', 'name_data/labeled/company_labeled.xml')
     # full_name_file = os.path.join(BASE_DIR, 'name_data/labeled/junk.xml')
