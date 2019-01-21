@@ -1,5 +1,6 @@
 # Module to measure classification accuracy
 # Reads data from csv file
+
 import os
 import re
 from collections import OrderedDict
@@ -19,7 +20,6 @@ def equally_tagged(labels_true, labels_pred):
             'MiddleInitial': 'MiddleName',
             'FirstInitial': 'GivenName',
         }.get(predicted_sequence[1], predicted_sequence[1])
-        # true_name = labels_true.get(label)
         if label in labels_true.values():
             value_index = list(labels_true.values()).index(label)
             true_name = labels_true.get((list(labels_true.keys())[value_index]))
@@ -108,8 +108,6 @@ def launch():
     # outer_file = os.path.join(BASE_DIR, 'mahara-full-names/labeled_xml/people1.xml')
 
     dict_csv = read_dict_from_csv(labeled_csv_file)
-
-    # measure_accuracy(dict_csv, outer_file=outer_file)
     measure_accuracy(dict_csv)
 
 
