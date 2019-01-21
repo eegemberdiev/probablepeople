@@ -4,7 +4,7 @@ import os
 
 from parserator import data_prep_utils
 
-from operations.heplers.csv_handler import read_from_csv
+from operations.heplers.csv_handler import read_matrix_from_csv
 from probablepeople import parse
 from settings import BASE_DIR
 
@@ -18,7 +18,7 @@ def launch():
     # import importlib
     # module = importlib.import_module('parse_from_csv')
     import probablepeople
-    for row_string in read_from_csv(full_name_file):
+    for row_string in read_matrix_from_csv(full_name_file):
         labeled_sequence = parse(row_string[0])
         data_prep_utils.appendListToXMLfile([labeled_sequence], probablepeople, outer_file)
         # print(labeled_sequence)
